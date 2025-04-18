@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chicken Order</title>
+    <style>
+        body { text-align: center; font-family: Arial; }
+        .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+        .circle img {
+            width: 100%;
+            height: 100%;
+        }
+        h1 {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle">
+        <img src="e:\images\chicken.png.jpg" alt="Chicken">
+    </div>
+    <h1>Chicken</h1>
+    <p><strong>Half kg = ₹100</strong></p>
+    
+    <label for="kg">ENTER KG:</label>
+    <input type="number" id="kg" placeholder="How many kg?"><br><br>
+
+    <a href="#" onclick="goToNext()">
+        <button>NEXT</button>
+    </a>
+
+    <script>
+        function goToNext() {
+            const kg = document.getElementById('kg').value;
+            if (kg && kg > 0) {
+                window.location.href = `chicken-bill.html?kg=${kg}`;
+            } else {
+                alert("Please enter valid kg");
+            }
+        }
+    </script>
+</body>
+</html>

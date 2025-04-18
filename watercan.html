@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Water Can</title>
+</head>
+<body style="text-align:center;">
+  <h2><img src="e:\images\watercan.png.jpg" width="100" height="100"></h2>
+  <h2><mark>Water Can</mark></h2>
+  <p>Per 20L Can = ₹5</p>
+
+  <label><b>ENTER CANS:</b></label><br>
+  <input type="number" id="cans"><br><br>
+
+  <button onclick="goNext()">Next</button>
+
+  <script>
+    function goNext() {
+      const cans = document.getElementById('cans').value;
+      if (cans === '' || cans <= 0) {
+        alert("Please enter cans");
+        return;
+      }
+      window.location.href = `watercan-bill.html?cans=${cans}`;
+    }
+  </script>
+</body>
+</html>

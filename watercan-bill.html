@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Water Can Bill</title>
+</head>
+<body style="text-align:center;">
+  <h2>Water Can Order</h2>
+
+  <p id="bill"></p>
+  <p>Delivery: ₹10 per can</p>
+  <p>Tax: ₹3</p>
+  <p id="total"></p>
+
+  <textarea id="address" placeholder="Type your address..."></textarea><br><br>
+  <button onclick="useLocation()">📍 Use My Location</button><br><br>
+
+  <button onclick="sendWhatsApp()">NEXT</button>
+
+  <script>
+    const url = new URLSearchParams(window.location.search);
+    const cans = parseInt(url.get('cans'));
+    const price = 5;
+    const delivery = cans * 10;
+    const tax = 3;
+    const total = (cans * price) + delivery + tax;
+
+    document.getElementById('bill').innerText = `Water Cans: ${cans} × ₹${price} = ₹${cans * price}`;
+    document.getElementById('total').innerText = `Total: ₹${total}`;
+
+    let gps = "";
+
+    function useLocation() {
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        gps = `https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude}`;
+        alert("Location added!");
+      });
+    }
+
+    function sendWhatsApp() {
+      const address = document.getElementById('address').value;
+      if (address === "" && gps === "") {
+        alert("Please enter address or use location");
+        return;
+      }
+
+      const msg = `New Water Can Order\nCans: ${cans}\nDelivery: ₹${delivery}\nTax: ₹3\nTotal: ₹${total}\nAddress: ${address}\nLocation: ${gps}`;
+      const link = `https://wa.me/919900754753?text=${encodeURIComponent(msg)}`;
+      window.location.href = link;
+    }
+  </script>
+</body>
+</html>

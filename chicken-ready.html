@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Be Ready</title>
+    <style>
+        body { text-align: center; font-family: Arial; }
+        h1 { color: orange; }
+    </style>
+</head>
+<body>
+    <h1 id="info"></h1>
+    <button onclick="nextPage()">NEXT</button>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const total = urlParams.get('total');
+        document.getElementById('info').innerText = `Keep ₹${total} ready with change`;
+
+        function nextPage() {
+            window.location.href = 'chicken-success.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Service</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 500px;
+            margin: 40px auto;
+        }
+        .icon-box {
+            background-color: white;
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .icon-box:hover {
+            transform: scale(1.05);
+        }
+        .icon-box img {
+            width: 100px;
+            height: 100px;
+        }
+        .icon-label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Select a Service</h1>
+
+<div class="grid">
+    <div class="icon-box" onclick="location.href='chicken.html'">
+        <img src="e:\images\chicken.png.jpg" alt="Chicken">
+        <div class="icon-label">Chicken</div>
+    </div>
+
+    <div class="icon-box" onclick="location.href='watercan.html'">
+        <img src="e:\images\watercan.png.jpg" alt="Water Can">
+        <div class="icon-label">Water Can</div>
+    </div>
+
+    <div class="icon-box" onclick="location.href='dryfruits.html'">
+        <img src="e:\images\dryfruits.png.jpg" alt="Dry Fruits">
+        <div class="icon-label">Dry Fruits</div>
+    </div>
+
+    <div class="icon-box" onclick="location.href='fishkabab.html'">
+        <img src="e:\images\fishkabab.png.jpg" alt="Fish Kabab">
+        <div class="icon-label">Fish Kabab</div>
+    </div>
+
+    <div class="icon-box" onclick="location.href='rice.html'">
+        <img src="e:\images\rice.png - Copy.jpg" alt="Rice">
+        <div class="icon-label">Rice</div>
+    </div>
+
+    <div class="icon-box" onclick="location.href='dropping.html'">
+        <img src="e:\images\dropping.png.jpg" alt="Dropping">
+        <div class="icon-label">Dropping</div>
+    </div>
+</div>
+
+</body>
+</html>

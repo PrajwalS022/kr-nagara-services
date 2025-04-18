@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chicken Bill</title>
+    <style>
+        body { font-family: Arial; text-align: center; }
+        h2 { color: green; }
+        textarea, button {
+            width: 80%;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Chicken Order Summary</h2>
+    <p id="line1"></p>
+    <p>Delivery charge: ₹10</p>
+    <p>Taxes: ₹3</p>
+    <p id="line4"></p>
+
+    <label><strong>Optional: Type your address</strong></label><br>
+    <textarea id="address" placeholder="Type address or landmark..."></textarea><br>
+
+    <button onclick="useLocation()">📍 Use My Location</button><br><br>
+
+    <button onclick="sendOrder()">NEXT</button>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const kg = parseFloat(urlParams.get('kg'));
+        const pricePerKg = 200;
+
+        const total1 = kg * pricePerKg;
+        const delivery = 10;
+        const taxes = 3;
+        const total = total1 + delivery + taxes;
+
+        document.getElementById('line1').innerText = `Chicken: ${kg} kg × ₹${pricePerKg} = ₹${total1}`;
+        document.getElementById('line4').innerText = `Total: ₹${total}`;
+
+        let gpsLink = "";
+
+        function useLocation() {
+            if (!navigator.geolocation) {
+                alert("Geolocation is not supported by your browser");
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                gpsLink = `https://maps.google.com/?q=${lat},${lon}`;
+                alert("Location added! You can now click NEXT to place order.");
+            }, () => {
+                alert("Unable to get your location. Please allow location access.");
+            });
+        }
+
+        function sendOrder() {
+            const address = document.getElementById('address').value;
+            if (address === "" && gpsLink === "") {
+                alert("Please enter address or use location.");
+                return;
+            }
+
+            const message = encodeURIComponent(
+                `🛒 New Chicken Order\n` +
+                `----------------------\n` +
+                `📦 Quantity: ${kg} kg\n` +
+                `💰 Total: ₹${total}\n` +
+                `📍 Address: ${address || ''}\n` +
+                (gpsLink ? `🌍 Location: ${gpsLink}` : '') +
+                `\n✅ Please confirm the order.`
+            );
+
+            const ownerNumber = "919900754753";
+            const whatsappLink = `https://wa.me/${ownerNumber}?text=${message}`;
+            window.location.href = whatsappLink;
+        }
+    </script>
+</body>
+</html>
